@@ -105,6 +105,7 @@ class DataValidation:
         """
         try:
             logging.info("Starting data validation process.")
+            
             train_file_path = self.data_ingestion_artifact.trained_file_path
             test_file_path = self.data_ingestion_artifact.test_file_path 
 
