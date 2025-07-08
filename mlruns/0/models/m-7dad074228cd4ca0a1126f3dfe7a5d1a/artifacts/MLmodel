@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/abhin/Documents/Abhinav/Personal/Study/Udemy_DataScience/Projects/NeworkSecurity/mlruns/0/models/m-7dad074228cd4ca0a1126f3dfe7a5d1a/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.0
+mlflow_version: 3.1.2
+model_id: m-7dad074228cd4ca0a1126f3dfe7a5d1a
+model_size_bytes: 13329759
+model_uuid: m-7dad074228cd4ca0a1126f3dfe7a5d1a
+prompts: null
+run_id: 5966830295ef42c5956eba5bdda8ed60
+utc_time_created: '2025-07-08 22:43:47.757642'
