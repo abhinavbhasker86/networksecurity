@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/abhin/Documents/Abhinav/Personal/Study/Udemy_DataScience/Projects/NeworkSecurity/mlruns/0/a3c2cf4c98f4407a8888a9ed332eab16/artifacts
+end_time: 1752006642596
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a3c2cf4c98f4407a8888a9ed332eab16
+run_name: efficient-squid-773
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752006631463
+status: 3
+tags: []
+user_id: abhin

@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/abhin/Documents/Abhinav/Personal/Study/Udemy_DataScience/Projects/NeworkSecurity/mlruns/0/models/m-caa51463f1c44fe58b11edf96d324479/artifacts
+creation_timestamp: 1752006631622
+experiment_id: '0'
+last_updated_timestamp: 1752006638435
+model_id: m-caa51463f1c44fe58b11edf96d324479
+model_type: null
+name: model
+source_run_id: a3c2cf4c98f4407a8888a9ed332eab16
+status: 2
+status_message: null

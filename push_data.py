@@ -22,7 +22,7 @@ class NetworkDataExtract():
         try:
             pass
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB PushData 1--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
     
     def csv_to_json_convertor(self, file_path):
@@ -35,7 +35,7 @@ class NetworkDataExtract():
             logging.info("CSV file successfully converted to JSON format.")
             return records
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB PushData 2--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
         
     def insert_data_mongodb(self,records,database,collection):
@@ -56,7 +56,7 @@ class NetworkDataExtract():
             return (len(self.records)) # Return the number of records inserted
 
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB PushData 3--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
         
 if __name__ == '__main__':
@@ -75,6 +75,6 @@ if __name__ == '__main__':
         logging.info(f"Inserted {no_of_records} records into MongoDB collection '{collection}' in database '{database}'.")
 
     except Exception as e:
-        logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+        logging.info('------AB  PushData 4--EXCEPTION RAISING EXCEPTION------')
         raise NetworkSecurityException(e, sys)
         
