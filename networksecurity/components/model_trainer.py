@@ -24,14 +24,14 @@ from sklearn.ensemble import (
     RandomForestClassifier,
 )
 
-#import mlflow
+import mlflow
 from urllib.parse import urlparse
 
 #import dagshub
-#dagshub.init(repo_owner='krishnaik06', repo_name='networksecurity', mlflow=True)
+#dagshub.init(repo_owner='abhinavbhasker86', repo_name='networksecurity', mlflow=True)
 '''
-os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/krishnaik06/networksecurity.mlflow"
-os.environ["MLFLOW_TRACKING_USERNAME"]="krishnaik06"
+os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/abhinavbhasker86/networksecurity.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"]="abhinavbhasker86"
 os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
 '''
 
@@ -46,9 +46,9 @@ class ModelTrainer:
         except Exception as e:
             logging.info('------AB MT1--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e,sys)
-    '''  
+      
     def track_mlflow(self,best_model,classificationmetric):
-        mlflow.set_registry_uri("https://dagshub.com/krishnaik06/networksecurity.mlflow")
+        #mlflow.set_registry_uri("https://dagshub.com/krishnaik06/networksecurity.mlflow")
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
             f1_score=classificationmetric.f1_score
@@ -71,7 +71,7 @@ class ModelTrainer:
                 mlflow.sklearn.log_model(best_model, "model", registered_model_name=best_model)
             else:
                 mlflow.sklearn.log_model(best_model, "model")
-    ''' 
+     
 
         
     def train_model(self,X_train,y_train,x_test,y_test):
@@ -109,12 +109,13 @@ class ModelTrainer:
             }
             
         }
+        logging.info('After Defining Models and Params')	
         model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=x_test,y_test=y_test,
                                           models=models,param=params)
         
         ## To get best model score from dict
         best_model_score = max(sorted(model_report.values()))
-
+        logging.info(f'Best Model Score: {best_model_score}')	
         ## To get best model name from dict
 
         best_model_name = list(model_report.keys())[
@@ -123,26 +124,32 @@ class ModelTrainer:
         best_model = models[best_model_name]
         y_train_pred=best_model.predict(X_train)
 
+        logging.info(f'Best Model: {best_model}')	
+
         classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
         
         ## Track the experiements with mlflow
-        #self.track_mlflow(best_model,classification_train_metric)
+        self.track_mlflow(best_model,classification_train_metric)
 
 
         y_test_pred=best_model.predict(x_test)
         classification_test_metric=get_classification_score(y_true=y_test,y_pred=y_test_pred)
 
-        #self.track_mlflow(best_model,classification_test_metric)
+        self.track_mlflow(best_model,classification_test_metric)
 
         preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
             
         model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
 
+        logging.info(f'model_dir_path: {model_dir_path}')	
+
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
+        
         #model pusher
-        #save_object("final_model/model.pkl",best_model)
+        logging.info('Pushing model.pkl')		
+        save_object("final_model/model.pkl",best_model)
         
 
         ## Model Trainer Artifact
@@ -152,14 +159,9 @@ class ModelTrainer:
                              )
         logging.info(f"Model trainer artifact: {model_trainer_artifact}")
         return model_trainer_artifact
-
-
-        
-
-
-       
     
     
+
         
     def initiate_model_trainer(self)->ModelTrainerArtifact:
         try:
@@ -183,3 +185,4 @@ class ModelTrainer:
             
         except Exception as e:
             raise NetworkSecurityException(e,sys)
+        

@@ -7,4 +7,6 @@ pymongo
 certifi
 dill
 pyaml
+mlflow
+dagshub
 # -e .
