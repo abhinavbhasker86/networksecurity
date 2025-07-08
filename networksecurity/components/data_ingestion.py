@@ -23,9 +23,9 @@ class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig):
         try:
             self.data_ingestion_config = data_ingestion_config
-            #self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB 1--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
         
     def export_collection_as_dataframe(self):
@@ -50,7 +50,7 @@ class DataIngestion:
 
 
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB 2--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
         
     def export_data_into_feature_store(self,dataframe: pd.DataFrame):
@@ -72,7 +72,7 @@ class DataIngestion:
             return dataframe
         
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB 3--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
 
     def split_data_as_train_test(self, dataframe: pd.DataFrame):
@@ -106,7 +106,7 @@ class DataIngestion:
             #return train_set, test_set
         
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB 4--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
     
     def initiate_data_ingestion(self):
@@ -125,6 +125,6 @@ class DataIngestion:
             return dataingestionartifact  # Returning the artifact
         
         except Exception as e:
-            logging.info('------AB--EXCEPTION RAISING EXCEPTION------')
+            logging.info('------AB 5--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys)
 

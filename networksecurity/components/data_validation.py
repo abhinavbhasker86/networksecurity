@@ -28,6 +28,7 @@ class DataValidation:
             self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
 
         except Exception as e:
+            logging.info('------AB DV1--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys) from e
         
     @staticmethod
@@ -48,6 +49,7 @@ class DataValidation:
             logging.info(f"Reading data from {file_path}")
             return pd.read_csv(file_path)
         except Exception as e:
+            logging.info('------AB DV2--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e,sys)
         
     def validate_number_of_columns(self,dataframe:pd.DataFrame)->bool:
@@ -59,6 +61,7 @@ class DataValidation:
                 return True
             return False
         except Exception as e:
+            logging.info('------AB DV3--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e,sys)
         
     def detect_dataset_drift(self,base_df,current_df,threshold=0.05)->bool:
@@ -91,6 +94,7 @@ class DataValidation:
             write_yaml_file(file_path=drift_report_file_path,content=report)
 
         except Exception as e:
+            logging.info('------AB DV4--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys) from e
         
     def initiate_data_validation(self) -> DataValidationArtifact:
@@ -147,4 +151,5 @@ class DataValidation:
             return data_validation_artifact
         
         except Exception as e:
+            logging.info('------AB DV5--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys) from e   

@@ -23,6 +23,7 @@ class DataTransformation:
             self.data_validation_artifact:DataValidationArtifact = data_validation_artifact
             self.data_transformation_config:DataTransformationConfig = data_transformation_config
         except Exception as e:
+            logging.info('------AB DT1--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys) from e 
     
     @staticmethod
@@ -43,6 +44,7 @@ class DataTransformation:
             logging.info(f"Reading data from {file_path}")
             return pd.read_csv(file_path)
         except Exception as e:
+            logging.info('------AB DT2--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e,sys)       
 
     def get_data_transformer_object(cls)->Pipeline:
@@ -67,6 +69,7 @@ class DataTransformation:
            processor:Pipeline=Pipeline([("imputer",imputer)])
            return processor
         except Exception as e:
+            logging.info('------AB DT3--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e,sys)
 
     def initiate_data_transformation(self)->DataTransformationArtifact:
@@ -113,4 +116,5 @@ class DataTransformation:
             return data_transformation_artifact
             
         except Exception as e:
+            logging.info('------AB DT4--EXCEPTION RAISING EXCEPTION------')
             raise NetworkSecurityException(e, sys) from e 
