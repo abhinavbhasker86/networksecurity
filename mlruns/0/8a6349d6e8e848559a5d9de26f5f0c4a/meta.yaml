@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/abhin/Documents/Abhinav/Personal/Study/Udemy_DataScience/Projects/NeworkSecurity/mlruns/0/8a6349d6e8e848559a5d9de26f5f0c4a/artifacts
+end_time: 1752012030701
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8a6349d6e8e848559a5d9de26f5f0c4a
+run_name: clean-yak-605
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752012025621
+status: 3
+tags: []
+user_id: abhin
